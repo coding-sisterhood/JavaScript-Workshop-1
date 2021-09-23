@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>News of the Day</title>
+    <style>
+      html,
+      body,
+      div,
+      iframe {
+        margin: 0px;
+        padding: 0px;
+        height: 100%;
+        border: none;
+      }
+      .news {
+        display: block;
+        border: none;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+        transform-origin: center top;
+        transition: transform 0.5s linear;
+        backface-visibility: hidden;
+      }
+      .timer {
+        font-size: 23px;
+        color: linen;
+        text-align: center;
+        right: 1px;
+        position: absolute;
+        width: 9%;
+        height: 100px;
+        background-color: firebrick;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="timer">Next source in <span id="time">00:03</span></div>
+    <iframe src=" " id="newsbox" class="news" title="Daily News"></iframe>
+
+    <script>
+      // news source iframe
+      let i = 0;
+      const newsSources = [
+        "https://7news.com.au/news/tas",
+        "https://www.news.com.au/national/breaking-news",
+        "https://www.9news.com.au/world",
+        "https://www.9news.com.au/weather/tas/hobart",
+      ];
+      const time = 3000;
+      const newsbox = document.getElementById("newsbox");
+
+      function changeNews() {
+        console.log(i, newsSources[i]);
+        newsbox.src = newsSources[i];
+
+        if (i < newsSources.length - 1) {
+          i++;
+        } else {
+          i = 0;
+        }
+
+        setTimeout(changeNews, time);
+      }
+
+      // countdown timer
+      function startTimer(duration, display) {
+        let timer = duration;
+        let minutes;
+        let seconds;
+
+        setInterval(function () {
+          minutes = parseInt(timer / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          display.textContent = minutes + ":" + seconds;
+
+          if (timer <= 0) {
+            timer = duration;
+          } else {
+            timer -= 1;
+          }
+          // timer = timer < 0 ? duration : timer - 1;
+        }, 1000);
+      }
+
+      function timer() {
+        var threeSeconds = 3,
+          display = document.querySelector("#time");
+        startTimer(threeSeconds, display);
+      }
+
+      function start() {
+        timer();
+        changeNews();
+      }
+
+      window.onload = start;
+    </script>
+  </body>
+</html>
