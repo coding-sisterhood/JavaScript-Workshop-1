@@ -11,7 +11,6 @@ Topics that are covered in the exercise includes:
 
 # Requirements
 
-- code editor of your choice (we recommend VS Code)
 - internet browser
 
 # Resources
