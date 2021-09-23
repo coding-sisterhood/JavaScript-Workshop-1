@@ -3,12 +3,19 @@
 This is an exercise for the first JavaScript workshop.
 
 Topics that are covered in the exercise includes:
+
 - functions
 - variables
 - operators
 - syntax
 
 # Requirements
+
 - code editor of your choice (we recommend VS Code)
 - internet browser
 
+# Resources
+
+[Learn-JS](https://www.learn-js.org/en/Welcome)
+
+[MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
